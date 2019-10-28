@@ -14,13 +14,24 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			title: 'Webpack 4 Starter',
+			title: 'Home Page: Webpack 4 Starter Package',
 			template: './src/index.html',
 			inject: true,
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true
-			}
+			},
+			filename: 'index.html'
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Inner Page: Webpack 4 Starter Package',
+			template: './src/error.html',
+			inject: true,
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true
+			},
+			filename: 'error.html'
 		}),
 		// new MiniCssExtractPlugin({
 		// 	filename: 'stylesheet.css'

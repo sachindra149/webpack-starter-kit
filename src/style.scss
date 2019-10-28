@@ -1,13 +1,144 @@
+$white: #ffffff;
+$bodyText: #1d3c41;
+$formBg: rgb(247, 247, 247);
+$formBorder: rgba(147, 184, 189,0.8);
+$formShadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+
+$inputBorder: rgb(178, 178, 178);
+$inputBoxShadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+
+$mainFontSize: 14px;
+
+$buttonBorderColor: rgb(28, 108, 122);
+$buttonTextShadow: rgba(0, 0, 0, 0.5);
+$buttonBg: rgb(61, 157, 179);
+$buttonBgHover: rgb(74, 179, 198);
+$buttonBoxShadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0px 0px 0px 3px rgb(254, 254, 254), 0px 5px 3px 3px rgb(210, 210, 210);
+
 @font-face {
 	font-family: 'Bai Jamjuree';
 	src: url('./fonts/BaiJamjuree-Regular.ttf');
 }
-body {
+.fullWidth {
+	float: left;
+	width: 100%;
+}
+.fullHeight {
+	height: 100%;
+}
+.textCenter {
 	text-align: center;
-	color: #ff0000;
-	background: url("./images/webpack-logo.gif") no-repeat center center;
+}
+.container {
+	width: 500px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+.midAligned {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@extend .fullHeight;
+}
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	user-select: none;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	color: $bodyText;
+	background: url(./images/bg.jpg) repeat top left;
 	font-family: 'Bai Jamjuree', sans-serif;
-	h3 {
-		user-select: none;
+	font-size: $mainFontSize;
+	padding: 25px 0px;
+	.form {
+		@extend .fullWidth;
+		border-radius: 5px;
+		padding: 20px 6%;
+		background: $formBg;
+		border: 1px solid $formBorder;
+		box-shadow: $formShadow;
+		h2 {
+			background: -webkit-repeating-linear-gradient(-45deg, rgb(18, 83, 93) , rgb(18, 83, 93) 20px, rgb(64, 111, 118) 20px, rgb(64, 111, 118) 40px, rgb(18, 83, 93) 40px);
+			-webkit-text-fill-color: transparent;
+			color: rgb(6, 106, 117);
+			padding: 2px 0 10px 0;
+			font-weight: bold;
+			text-align: center;
+			padding-bottom: 30px;
+			-webkit-background-clip: text;
+		}
+		.form-group {
+			padding-bottom: 20px;
+			input.form-control {
+				@extend .fullWidth;
+				font-size: 1em;
+				color: $bodyText;
+				outline: none;
+				padding: 10px;
+				border: 1px solid $inputBorder;
+				transition: all 0.2s linear;
+				border-radius: 3px;
+				box-shadow: $inputBoxShadow;
+			}
+		}
+		button {
+			cursor: pointer;
+			background: $buttonBg;
+			padding: 8px 5px;
+			color: $white;
+			border: 1px solid $buttonBorderColor;
+			text-shadow: 0 1px 1px $buttonTextShadow;
+			border-radius: 3px;
+			box-shadow: $buttonBoxShadow;
+			transition: all 0.2s linear;
+			max-width: 200px;
+			float: right;
+			font-size: 1em;
+			&:hover, &:focus {
+				background: $buttonBgHover;
+			}
+		}
+	}
+}
+.form-check {
+	input[type="checkbox"] {
+		position: absolute;
+		opacity: 0;
+		&:checked {
+			+ label {
+				&:after {
+					content: "";
+					position: absolute;
+					left: 3px;
+					top: 8px;
+					background: $inputBorder;
+					width: 2px;
+					height: 2px;
+					box-shadow: 2px 0 0 $inputBorder, 4px 0 0 $inputBorder, 4px -2px 0 $inputBorder, 4px -4px 0 $inputBorder, 4px -6px 0 $inputBorder, 4px -8px 0 $inputBorder;
+					transform: rotate(45deg);
+				}
+			}
+		}
+	}
+	label {
+		position: relative;
+		cursor: pointer;
+		padding: 0;
+		&:before {
+			content: '';
+			margin-right: 10px;
+			display: inline-block;
+			vertical-align: text-top;
+			width: 15px;
+			height: 15px;
+			background: $white;
+			border: 1px solid $inputBorder;
+		}
 	}
 }

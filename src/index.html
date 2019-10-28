@@ -5,10 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title><%= htmlWebpackPlugin.options.title %></title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
 </head>
 <body>
-	<h3>Welcome to Webpack 4 starter pack</h3>
-	<img src="./assets/images/icons.jpg" />
+	<div class="container midAligned">
+		<div class="fullWidth">
+			<div class="form">
+				<h2 class="fullWidth textCenter">Home Page Form</h2>
+				<form>
+					<div class="form-group fullWidth">
+						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+					</div>
+					<div class="form-group fullWidth">
+						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+					</div>
+					<div class="form-group fullWidth form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1" />
+						<label class="form-check-label" for="exampleCheck1">Check me out</label>
+					</div>
+					<button type="submit" class="btn btn-primary fullWidth">Submit</button>
+				  </form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
