@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Bai Jamjuree';
+	src: url('./fonts/BaiJamjuree-Regular.ttf');
+}
+body {
+	text-align: center;
+	color: #ff0000;
+	background: url("./images/webpack-logo.gif") no-repeat center center;
+	font-family: 'Bai Jamjuree', sans-serif;
+	h3 {
+		user-select: none;
+	}
+}
