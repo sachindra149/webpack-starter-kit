@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,16 +7,23 @@ const { CleanWebpackPlugin }   = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		index: './src/index.js',
+		innerPage: './src/innerPage.js'
+	},
 	output: {
-		filename: '[name].[chunkhash].js',
+		chunkFilename: '[name].bundle.js',
+		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, '../dist')
+	},
+	optimization: {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'Home Page: Webpack 4 Starter Package',
 			template: './src/index.html',
+			chunks: ['index'],
 			inject: true,
 			minify: {
 				removeComments: true,
@@ -25,19 +33,20 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			title: 'Inner Page: Webpack 4 Starter Package',
-			template: './src/error.html',
+			template: './src/innerPage.html',
+			chunks: ['innerPage'],
 			inject: true,
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true
 			},
-			filename: 'error.html'
+			filename: 'innerPage.html'
 		}),
 		// new MiniCssExtractPlugin({
 		// 	filename: 'stylesheet.css'
 		// }),
 		new MiniCssExtractPlugin({
-			filename: 'style.[chunkhash].css'
+			filename: '[contenthash].bundle.css'
 		}),
 		new CopyWebpackPlugin([{
 			from: './src/images',
